@@ -7,10 +7,17 @@ import { u } from '../lib/url';
 
       <!-- Brand -->
       <div class="flex flex-col gap-4">
-        <img src={u('/img/logo.png')} alt="ISFT N°189 Luján" class="h-12 w-auto" width="140" height="48" />
+        <div class="flex items-center gap-3">
+          <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white shadow-lg shadow-black/20 p-1.5">
+            <img src={u('/img/logo.png')} alt="" class="max-h-full max-w-full object-contain" />
+          </div>
+          <div class="leading-tight">
+            <p class="font-bold text-white text-lg">ISFT N°189</p>
+            <p class="text-xs text-accent font-medium">Luján · Buenos Aires</p>
+          </div>
+        </div>
         <p class="text-sm leading-relaxed text-slate-400">
-          Instituto Superior de Formación Técnica N°189 — Luján, Buenos Aires.<br />
-          Tecnicaturas superiores con título oficial.
+          Instituto Superior de Formación Técnica — tecnicaturas superiores con título oficial.
         </p>
         <div class="flex items-center gap-3">
           <a

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CarreraCard from '../../components/CarreraCard.astro';
 import { getCollection } from 'astro:content';
+import { u } from '../../lib/url';
 
 const carreras = (await getCollection('carreras')).sort((a, b) => a.data.orden - b.data.orden);
 ---
@@ -10,11 +11,16 @@ const carreras = (await getCollection('carreras')).sort((a, b) => a.data.orden -
   description="Conocé las 6 tecnicaturas superiores del ISFT N°189 de Luján: Ciencia de Datos e IA, Análisis de Sistemas, Desarrollo de Software, Guía de Turismo, Turismo y Periodismo."
 >
   <!-- Page header -->
-  <div class="bg-primary text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-      <p class="text-sm font-semibold uppercase tracking-wider text-accent mb-2">Oferta académica</p>
-      <h1 class="text-4xl font-bold mb-3">Nuestras tecnicaturas</h1>
-      <p class="text-slate-300 max-w-2xl">
+  <div class="relative bg-primary text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={u('/img/carreras/hero.jpg')} alt="" class="w-full h-full object-cover opacity-20" loading="eager" />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/70"></div>
+    </div>
+    <div class="absolute -top-20 -right-20 w-72 h-72 bg-accent/15 rounded-full blur-3xl"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <p class="reveal text-sm font-semibold uppercase tracking-wider text-accent mb-2">Oferta académica</p>
+      <h1 class="reveal reveal-delay-1 text-4xl font-bold mb-3">Nuestras tecnicaturas</h1>
+      <p class="reveal reveal-delay-2 text-slate-300 max-w-2xl">
         Seis tecnicaturas superiores de 3 años con título oficial y modalidad semi-presencial.
         Formación práctica y actualizada con salida laboral inmediata.
       </p>
@@ -24,21 +30,25 @@ const carreras = (await getCollection('carreras')).sort((a, b) => a.data.orden -
   <!-- Cards -->
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {carreras.map(carrera => <CarreraCard carrera={carrera} />)}
+      {carreras.map((carrera, i) => (
+        <div class={`reveal reveal-delay-${Math.min(i, 4)}`}>
+          <CarreraCard carrera={carrera} />
+        </div>
+      ))}
     </div>
 
     <!-- Info strip -->
-    <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 rounded-2xl bg-slate-100 p-6 text-center">
-      <div>
-        <p class="text-3xl font-bold text-primary">6</p>
+    <div class="reveal mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-50 border border-slate-200 p-6 text-center">
+      <div class="group">
+        <p class="text-3xl font-bold text-primary group-hover:text-accent transition-colors">6</p>
         <p class="text-sm text-slate-500 mt-1">tecnicaturas superiores</p>
       </div>
-      <div>
-        <p class="text-3xl font-bold text-primary">3 años</p>
+      <div class="group sm:border-x sm:border-slate-200">
+        <p class="text-3xl font-bold text-primary group-hover:text-accent transition-colors">3 años</p>
         <p class="text-sm text-slate-500 mt-1">duración con título oficial</p>
       </div>
-      <div>
-        <p class="text-3xl font-bold text-primary">Semi-pres.</p>
+      <div class="group">
+        <p class="text-3xl font-bold text-primary group-hover:text-accent transition-colors">Semi-pres.</p>
         <p class="text-sm text-slate-500 mt-1">modalidad flexible 2026</p>
       </div>
     </div>

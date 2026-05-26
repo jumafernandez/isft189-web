@@ -13,38 +13,51 @@ const novedades = (await getCollection('novedades')).sort(
 
   <!-- Hero -->
   <section class="relative bg-primary overflow-hidden">
+    <!-- Background image with gradient overlay -->
+    <div class="absolute inset-0">
+      <img
+        src={u('/img/carreras/hero.jpg')}
+        alt=""
+        class="w-full h-full object-cover opacity-30"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/60"></div>
+    </div>
     <!-- Subtle decorative grid -->
-    <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute inset-0 opacity-[0.07]" style="background-image: linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.15) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <!-- Floating glow -->
+    <div class="absolute -top-32 -right-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-float"></div>
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
       <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 rounded-full bg-accent/20 border border-accent/30 px-4 py-1.5 text-sm font-medium text-accent mb-6">
+        <div class="reveal inline-flex items-center gap-2 rounded-full bg-accent/20 border border-accent/30 px-4 py-1.5 text-sm font-medium text-accent mb-6">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
           </span>
           Inscripciones 2026 abiertas
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+        <h1 class="reveal reveal-delay-1 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
           Formación técnica<br />
           <span class="text-accent">para el futuro</span>
         </h1>
-        <p class="text-lg md:text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl">
+        <p class="reveal reveal-delay-2 text-lg md:text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl">
           Tecnicaturas superiores de 3 años con título oficial, en modalidad semi-presencial.
           Preparáte para el mercado laboral con formación práctica y actualizada.
         </p>
-        <div class="flex flex-wrap gap-4">
+        <div class="reveal reveal-delay-3 flex flex-wrap gap-4">
           <a
             href={u('/carreras')}
-            class="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-base font-semibold text-primary hover:bg-accent-light transition-colors shadow-lg shadow-accent/20"
+            class="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-base font-semibold text-primary hover:bg-accent-light hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/30 transition-all shadow-lg shadow-accent/20"
           >
             Ver carreras
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
             </svg>
           </a>
           <a
             href={u('/inscripcion')}
-            class="inline-flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors"
+            class="inline-flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 hover:border-white/40 hover:-translate-y-0.5 transition-all"
           >
             Cómo inscribirse
           </a>
@@ -57,7 +70,7 @@ const novedades = (await getCollection('novedades')).sort(
 
   <!-- Carreras -->
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-    <div class="mb-10">
+    <div class="reveal mb-10">
       <p class="text-sm font-semibold uppercase tracking-wider text-accent mb-2">Oferta académica</p>
       <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Nuestras tecnicaturas</h2>
       <p class="mt-3 text-slate-500 max-w-xl">
@@ -65,7 +78,11 @@ const novedades = (await getCollection('novedades')).sort(
       </p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {carreras.map(carrera => <CarreraCard carrera={carrera} />)}
+      {carreras.map((carrera, i) => (
+        <div class={`reveal reveal-delay-${Math.min(i, 4)}`}>
+          <CarreraCard carrera={carrera} />
+        </div>
+      ))}
     </div>
   </section>
 
@@ -110,26 +127,31 @@ const novedades = (await getCollection('novedades')).sort(
 
   <!-- CTA Inscripción -->
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-    <div class="rounded-3xl bg-primary px-8 py-12 md:py-16 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-        ¿Querés estudiar con nosotros?
-      </h2>
-      <p class="text-slate-300 text-lg max-w-xl mx-auto mb-8">
-        Las inscripciones 2026 están abiertas. Sumate a una de nuestras 6 tecnicaturas superiores.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a
-          href={u('/inscripcion')}
-          class="rounded-xl bg-accent px-8 py-3 text-base font-semibold text-primary hover:bg-accent-light transition-colors"
-        >
-          Ver cómo inscribirme
-        </a>
-        <a
-          href={u('/contacto')}
-          class="rounded-xl border border-white/20 px-8 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors"
-        >
-          Consultar
-        </a>
+    <div class="reveal relative overflow-hidden rounded-3xl bg-primary px-8 py-12 md:py-16 text-center">
+      <!-- Decorative orbs -->
+      <div class="absolute -top-20 -left-20 w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute -bottom-32 -right-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
+      <div class="relative">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Querés estudiar con nosotros?
+        </h2>
+        <p class="text-slate-300 text-lg max-w-xl mx-auto mb-8">
+          Las inscripciones 2026 están abiertas. Sumate a una de nuestras 6 tecnicaturas superiores.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href={u('/inscripcion')}
+            class="rounded-xl bg-accent px-8 py-3 text-base font-semibold text-primary hover:bg-accent-light hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/30 transition-all"
+          >
+            Ver cómo inscribirme
+          </a>
+          <a
+            href={u('/contacto')}
+            class="rounded-xl border border-white/20 px-8 py-3 text-base font-semibold text-white hover:bg-white/10 hover:border-white/40 hover:-translate-y-0.5 transition-all"
+          >
+            Consultar
+          </a>
+        </div>
       </div>
     </div>
   </section>

@@ -31,9 +31,21 @@ const iconName = iconMap[icono] ?? 'chart-bar';
 <BaseLayout title={nombre} description={descripcionCorta}>
 
   <!-- Header -->
-  <div class="bg-primary text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-      <a href={u('/carreras')} class="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-6">
+  <div class="relative bg-primary text-white overflow-hidden">
+    <!-- Background image -->
+    <div class="absolute inset-0">
+      <img
+        src={u(`/img/carreras/${entry.slug}.jpg`)}
+        alt=""
+        class="w-full h-full object-cover opacity-25"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/70"></div>
+    </div>
+    <!-- Decorative orb -->
+    <div class="absolute -top-20 -right-20 w-72 h-72 bg-accent/15 rounded-full blur-3xl"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <a href={u('/carreras')} class="inline-flex items-center gap-1.5 text-sm text-slate-300 hover:text-white transition-colors mb-6">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/>
         </svg>
