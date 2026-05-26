@@ -9,6 +9,32 @@ destacada: false
 icono: "map"
 orden: 4
 planPdf: "/planes/guia-de-turismo.pdf"
+planMaterias:
+  - anio: 1
+    materias:
+      - "Inglés I"
+      - "Introducción al Turismo"
+      - "Metodología de la Investigación y Técnicas de Relevamiento"
+      - "Psicología de los Sujetos en Contexto"
+      - "Interpretación del Espacio Turístico Ambiental de la Argentina"
+      - "Interpretación del Patrimonio Turístico de la Argentina"
+      - "Interpretación de las Transformaciones Sociales de la Argentina"
+  - anio: 2
+    materias:
+      - "Inglés II"
+      - "Idioma Adicional de Definición Institucional I"
+      - "TIC Aplicadas al Turismo"
+      - "Recreación y Animación Socio-Cultural"
+      - "Interpretación del Espacio Turístico Local"
+      - "Interpretación de las Manifestaciones Artísticas y Culturales"
+  - anio: 3
+    materias:
+      - "Idioma Adicional de Definición Institucional II"
+      - "Legislación Turística"
+      - "Interpretación del Espacio Turístico Ambiental Internacional"
+      - "Interpretación del Patrimonio Turístico Internacional"
+      - "Gestión de Circuitos Turísticos"
+      - "Prácticas Profesionales"
 ---
 
 ## Descripción

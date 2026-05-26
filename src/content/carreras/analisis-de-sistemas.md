@@ -9,6 +9,36 @@ destacada: true
 icono: "cpu-chip"
 orden: 2
 planPdf: "/planes/analisis-de-sistemas.pdf"
+planMaterias:
+  - anio: 1
+    materias:
+      - "Inglés I"
+      - "Ciencia, Tecnología y Sociedad"
+      - "Análisis Matemático I"
+      - "Álgebra"
+      - "Algoritmos y Estructuras de Datos I"
+      - "Sistemas y Organizaciones"
+      - "Arquitectura del Computador"
+      - "Prácticas Profesionalizantes I"
+  - anio: 2
+    materias:
+      - "Inglés II"
+      - "Análisis Matemático II"
+      - "Estadística"
+      - "Ingeniería de Software I"
+      - "Algoritmos y Estructuras de Datos II"
+      - "Sistemas Operativos"
+      - "Base de Datos"
+      - "Prácticas Profesionalizantes II"
+  - anio: 3
+    materias:
+      - "Inglés III"
+      - "Aspectos Legales de la Profesión"
+      - "Seminario de Actualización"
+      - "Redes y Comunicaciones"
+      - "Ingeniería de Software II"
+      - "Algoritmos y Estructuras de Datos III"
+      - "Prácticas Profesionalizantes III"
 ---
 
 ## Descripción

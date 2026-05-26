@@ -12,6 +12,12 @@ const carreras = defineCollection({
     icono: z.string(),
     orden: z.number(),
     planPdf: z.string().optional(),
+    planMaterias: z.array(z.object({
+      anio: z.number(),
+      cuatrimestre1: z.array(z.string()).optional(),
+      cuatrimestre2: z.array(z.string()).optional(),
+      materias: z.array(z.string()).optional(),
+    })).optional(),
   }),
 });
 

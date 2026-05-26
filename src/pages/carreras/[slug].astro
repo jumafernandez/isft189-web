@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 type Props = { entry: CollectionEntry<'carreras'> };
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { nombre, descripcionCorta, duracion, modalidad, nueva, planPdf, icono } = entry.data;
+const { nombre, descripcionCorta, duracion, modalidad, nueva, planPdf, icono, planMaterias } = entry.data;
 
 const iconMap: Record<string, Parameters<typeof Icon>[0]['name']> = {
   'chart-bar': 'chart-bar',
@@ -85,6 +85,64 @@ const iconName = iconMap[icono] ?? 'chart-bar';
         <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-p:text-slate-600 prose-li:text-slate-600 prose-a:text-accent prose-a:no-underline hover:prose-a:underline">
           <Content />
         </div>
+
+        {planMaterias && planMaterias.length > 0 && (
+          <section class="mt-12">
+            <div class="flex items-center gap-3 mb-6">
+              <h2 class="text-2xl font-bold text-slate-900">Plan de Estudios</h2>
+              <div class="flex-1 h-px bg-slate-200"></div>
+            </div>
+            <div class="space-y-4">
+              {planMaterias.map((anio) => {
+                const hasCuatrimestres = anio.cuatrimestre1 || anio.cuatrimestre2;
+                return (
+                  <div class="rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div class="bg-primary px-5 py-3 flex items-center gap-2">
+                      <span class="text-white font-bold text-base">{anio.anio}° Año</span>
+                    </div>
+                    {hasCuatrimestres ? (
+                      <div class="grid grid-cols-2 divide-x divide-slate-200 bg-white">
+                        <div class="p-5">
+                          <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-3">1er Cuatrimestre</p>
+                          <ul class="space-y-2">
+                            {anio.cuatrimestre1?.map((m) => (
+                              <li class="flex items-start gap-2 text-sm text-slate-700">
+                                <span class="text-accent shrink-0 mt-0.5">▸</span>
+                                {m}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div class="p-5">
+                          <p class="text-[11px] font-semibold text-accent uppercase tracking-widest mb-3">2do Cuatrimestre</p>
+                          <ul class="space-y-2">
+                            {anio.cuatrimestre2?.map((m) => (
+                              <li class="flex items-start gap-2 text-sm text-slate-700">
+                                <span class="text-accent shrink-0 mt-0.5">▸</span>
+                                {m}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    ) : (
+                      <div class="p-5 bg-white">
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+                          {anio.materias?.map((m) => (
+                            <li class="flex items-start gap-2 text-sm text-slate-700">
+                              <span class="text-accent shrink-0 mt-0.5">▸</span>
+                              {m}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
       </div>
 
       <!-- Sidebar -->

@@ -9,6 +9,38 @@ destacada: true
 icono: "chart-bar"
 orden: 1
 planPdf: "/planes/ciencia-de-datos-ia.pdf"
+planMaterias:
+  - anio: 1
+    cuatrimestre1:
+      - "Lógica Computacional"
+      - "Elementos de Análisis Matemático"
+      - "Inglés para Ciencia de Datos e IA I"
+      - "Técnicas de Programación"
+    cuatrimestre2:
+      - "Administración y Gestión de Bases de Datos"
+      - "Estadística y Probabilidades para Gestión de Datos"
+      - "Inglés para Ciencia de Datos e IA II"
+      - "PP: Aproximación al Campo Laboral"
+  - anio: 2
+    cuatrimestre1:
+      - "Desarrollo de Sistemas de Inteligencia Artificial"
+      - "Técnicas de Procesamiento del Habla"
+      - "Ciencia de Datos"
+    cuatrimestre2:
+      - "Modelizado de Minería de Datos"
+      - "Procesamiento de Aprendizaje Automático"
+      - "PP: Análisis y Exploración de Datos"
+  - anio: 3
+    cuatrimestre1:
+      - "Gestión de Proyectos"
+      - "Seminario de Actualización"
+      - "PP: Modelizado de Sistemas de IA"
+      - "Tecnología y Ambiente"
+    cuatrimestre2:
+      - "Taller de Comunicación"
+      - "Técnicas de Procesamiento Digital de Imágenes"
+      - "PP: Proyecto Integrador"
+      - "Trabajo, Tecnología y Sociedad"
 ---
 
 ## Descripción

@@ -9,6 +9,35 @@ destacada: true
 icono: "code-bracket"
 orden: 3
 planPdf: "/planes/desarrollo-de-software.pdf"
+planMaterias:
+  - anio: 1
+    materias:
+      - "Análisis Matemático"
+      - "Administración y Gestión de Base de Datos"
+      - "Introducción a la Programación"
+      - "Introducción a las Redes de Datos"
+      - "Sistemas Digitales"
+      - "Sistemas Operativos"
+      - "Laboratorio de Hardware"
+      - "Prácticas Profesionalizantes I"
+  - anio: 2
+    materias:
+      - "Inglés I"
+      - "Álgebra y Lógica"
+      - "Programación"
+      - "Diseño Web"
+      - "Estadística y Probabilidades"
+      - "Desarrollo de Aplicativos Móviles"
+      - "Desarrollo de Sistemas Orientado a Objetos"
+      - "Prácticas Profesionalizantes II"
+  - anio: 3
+    materias:
+      - "Inglés II"
+      - "Gestión de Proyectos"
+      - "Desarrollo de Sistemas Web"
+      - "Ingeniería de Software"
+      - "Metodología de Pruebas de Sistemas"
+      - "Prácticas Profesionalizantes III"
 ---
 
 ## Descripción

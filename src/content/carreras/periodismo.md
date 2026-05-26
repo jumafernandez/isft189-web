@@ -9,6 +9,37 @@ destacada: false
 icono: "newspaper"
 orden: 6
 planPdf: "/planes/periodismo.pdf"
+planMaterias:
+  - anio: 1
+    materias:
+      - "Historia Social General"
+      - "Economía Política"
+      - "Problemas Sociales Contemporáneos"
+      - "Teoría y Práctica de la Comunicación I"
+      - "Legislación Periodística y Derecho a la Información"
+      - "Lenguaje Periodístico I"
+      - "Periodismo Gráfico I"
+      - "Periodismo Televisivo I"
+      - "Periodismo Radial I"
+      - "Práctica Profesional I"
+  - anio: 2
+    materias:
+      - "Metodología de la Investigación"
+      - "Deontología Periodística"
+      - "Teoría y Práctica de la Comunicación II"
+      - "Lenguaje Periodístico II"
+      - "Periodismo Gráfico II"
+      - "Periodismo Radial II"
+      - "Práctica Profesional II"
+  - anio: 3
+    materias:
+      - "Inglés"
+      - "Análisis de la Actualidad"
+      - "Investigación Periodística"
+      - "Planificación de Emprendimiento Periodístico"
+      - "Periodismo Gráfico III"
+      - "Periodismo Televisivo II"
+      - "Periodismo y Nuevas Tecnologías"
 ---
 
 ## Descripción

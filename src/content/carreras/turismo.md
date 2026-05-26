@@ -9,6 +9,36 @@ destacada: false
 icono: "globe"
 orden: 5
 planPdf: "/planes/turismo.pdf"
+planMaterias:
+  - anio: 1
+    materias:
+      - "Inglés I"
+      - "Introducción al Turismo"
+      - "Metodología de la Investigación y Estadística Aplicada"
+      - "TIC Aplicadas al Turismo"
+      - "Interpretación del Espacio Turístico Ambiental de la Argentina"
+      - "Interpretación del Patrimonio Turístico de la Argentina"
+      - "Interpretación de las Transformaciones Sociales de la Argentina"
+      - "Interpretación del Espacio Turístico Local"
+      - "Prácticas Profesionalizantes I"
+  - anio: 2
+    materias:
+      - "Inglés II"
+      - "Segunda Lengua Adicional de Definición Institucional I"
+      - "Programación de Circuitos Turísticos"
+      - "Gestión de las Organizaciones Turísticas"
+      - "Interpretación del Espacio Turístico Ambiental Internacional"
+      - "Prácticas Profesionalizantes II"
+  - anio: 3
+    materias:
+      - "Inglés III"
+      - "Segunda Lengua Adicional de Definición Institucional II"
+      - "Gestión de Negocios y Análisis Financiero"
+      - "Política y Legislación en la Gestión del Turismo"
+      - "Marketing de las Organizaciones Turísticas"
+      - "Espacio de Definición Institucional (EDI)"
+      - "Interpretación del Patrimonio Turístico Internacional"
+      - "Prácticas Profesionalizantes III"
 ---
 
 ## Descripción
