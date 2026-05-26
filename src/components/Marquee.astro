@@ -1,0 +1,21 @@
+---
+const keywords = [
+  'Python', 'IA', 'Datos', 'React', 'Machine Learning',
+  'Sistemas', 'Software', 'Web', 'Móviles', 'APIs',
+  'Turismo', 'Patrimonio', 'Hospitalidad', 'Itinerarios',
+  'Periodismo', 'Multimedia', 'Investigación', 'Comunicación',
+  'Linux', 'SQL', 'Cloud', 'Networking',
+];
+// Duplicate the list so the animation can loop seamlessly (translateX -50%)
+const all = [...keywords, ...keywords];
+---
+<div class="relative bg-white border-y border-slate-200 py-5 overflow-hidden marquee-mask">
+  <div class="flex w-max animate-marquee gap-3 will-change-transform">
+    {all.map((kw, i) => (
+      <span class="inline-flex items-center gap-2 shrink-0 rounded-full bg-slate-50 border border-slate-200 px-4 py-1.5 text-sm font-medium text-slate-600">
+        <span class="text-accent">{i % 2 === 0 ? '◆' : '▸'}</span>
+        {kw}
+      </span>
+    ))}
+  </div>
+</div>

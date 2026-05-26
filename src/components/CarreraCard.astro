@@ -21,7 +21,9 @@ const iconName = iconMap[icono] ?? 'chart-bar';
 ---
 <a
   href={u(`/carreras/${carrera.slug}`)}
-  class="group flex flex-col rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-accent hover:-translate-y-1"
+  data-tilt
+  class="group flex flex-col rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden transition-[box-shadow,border-color] duration-300 hover:shadow-xl hover:shadow-accent/10 hover:border-accent will-change-transform"
+  style="transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms, border-color 300ms;"
 >
   <!-- Image banner -->
   <div class="relative h-36 overflow-hidden bg-primary">
