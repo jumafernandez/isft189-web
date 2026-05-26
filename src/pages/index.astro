@@ -131,9 +131,9 @@ const particles = Array.from({ length: 14 }, (_, i) => ({
         Seis carreras de nivel superior con salida laboral inmediata, todas en modalidad semi-presencial.
       </p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
       {carreras.map((carrera, i) => (
-        <div class={`reveal reveal-delay-${Math.min(i, 4)}`}>
+        <div class={`reveal reveal-delay-${Math.min(i, 4)} flex`}>
           <CarreraCard carrera={carrera} />
         </div>
       ))}

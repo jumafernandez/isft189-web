@@ -1,151 +1,312 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { u } from '../lib/url';
+import { getCollection } from 'astro:content';
+
+const carreras = (await getCollection('carreras')).sort((a, b) => a.data.orden - b.data.orden);
+
+// Contact endpoints — actualizar si cambian
+const EMAIL = 'Instituto189info@gmail.com';
+const PHONE_DISPLAY = '(02323) 436549';
+// Para WhatsApp se necesita un número de celular en formato internacional sin signos.
+// Argentina mobile: 549 + área (sin 0) + número (sin 15). Cambiar por el real.
+const WHATSAPP_NUMBER = '5492323436549';
 ---
 <BaseLayout
   title="Contacto"
-  description="Contactá al ISFT N°189 de Luján. Dirección, teléfono, email y formulario de contacto."
+  description="Contactá al ISFT N°189 de Luján. Dirección, teléfono, email y formulario para enviar tu consulta por WhatsApp o por mail."
 >
-  <div class="bg-primary text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-      <h1 class="text-4xl font-bold mb-3">Contacto</h1>
-      <p class="text-slate-300">Escribinos, llamanos o visitanos en la sede del instituto.</p>
+  <!-- Page header -->
+  <div class="relative bg-primary text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={u('/img/carreras/hero.jpg')} alt="" class="w-full h-full object-cover opacity-20" loading="eager" />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/70"></div>
+    </div>
+    <div class="absolute -top-20 -right-20 w-72 h-72 bg-accent/15 rounded-full blur-3xl"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <p class="reveal text-sm font-semibold uppercase tracking-wider text-accent mb-2">Estamos para ayudarte</p>
+      <h1 class="reveal reveal-delay-1 text-4xl font-bold mb-3">Contacto</h1>
+      <p class="reveal reveal-delay-2 text-slate-300 max-w-2xl">
+        Escribinos por WhatsApp, mail o visitanos en la sede. Te respondemos a la brevedad.
+      </p>
     </div>
   </div>
 
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
 
-      <!-- Contact info -->
-      <div class="flex flex-col gap-8">
-        <div>
-          <h2 class="text-2xl font-bold text-slate-900 mb-6">Datos de contacto</h2>
-          <ul class="flex flex-col gap-5">
-            <li class="flex items-start gap-4">
-              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+      <!-- Contact info (left, 2 cols) -->
+      <aside class="reveal lg:col-span-2 flex flex-col gap-6">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 class="text-lg font-bold text-slate-900 mb-5">Datos de contacto</h2>
+          <ul class="flex flex-col gap-4">
+            <li class="flex items-start gap-3 group">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-accent/15 group-hover:text-accent transition-colors">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
                 </svg>
               </div>
               <div>
-                <p class="font-medium text-slate-900">Dirección</p>
-                <p class="text-slate-500 text-sm mt-0.5">Hipólito Yrigoyen 1496<br />Luján, Buenos Aires</p>
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Dirección</p>
+                <p class="text-sm text-slate-700 mt-0.5">Hipólito Yrigoyen 1496<br/>Luján, Buenos Aires</p>
               </div>
             </li>
-            <li class="flex items-start gap-4">
-              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <li class="flex items-start gap-3 group">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-accent/15 group-hover:text-accent transition-colors">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/>
                 </svg>
               </div>
               <div>
-                <p class="font-medium text-slate-900">Teléfono</p>
-                <a href="tel:+5402323436549" class="text-sm text-accent hover:text-accent-dark transition-colors">(02323) 436549</a>
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Teléfono</p>
+                <a href="tel:+5402323436549" class="text-sm text-slate-700 hover:text-accent transition-colors">{PHONE_DISPLAY}</a>
               </div>
             </li>
-            <li class="flex items-start gap-4">
-              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <li class="flex items-start gap-3 group">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-accent/15 group-hover:text-accent transition-colors">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
                 </svg>
               </div>
-              <div>
-                <p class="font-medium text-slate-900">Email</p>
-                <a href="mailto:Instituto189info@gmail.com" class="text-sm text-accent hover:text-accent-dark transition-colors">
-                  Instituto189info@gmail.com
-                </a>
+              <div class="min-w-0">
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Email</p>
+                <a href={`mailto:${EMAIL}`} class="text-sm text-slate-700 hover:text-accent transition-colors break-all">{EMAIL}</a>
               </div>
             </li>
           </ul>
         </div>
 
-        <!-- Map placeholder -->
-        <div class="rounded-2xl overflow-hidden border border-slate-200 h-64 bg-slate-100 flex items-center justify-center">
-          <a
-            href="https://maps.google.com/?q=Hipólito+Yrigoyen+1496,+Luján,+Buenos+Aires"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center gap-2 text-slate-400 hover:text-accent transition-colors"
-          >
-            <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <!-- Map -->
+        <a
+          href="https://maps.google.com/?q=Hipólito+Yrigoyen+1496,+Luján,+Buenos+Aires"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative rounded-2xl overflow-hidden border border-slate-200 h-48 bg-slate-100 flex items-center justify-center hover:border-accent transition-colors"
+        >
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5"></div>
+          <div class="relative flex flex-col items-center gap-2 text-slate-500 group-hover:text-accent transition-colors">
+            <svg class="w-10 h-10 transition-transform group-hover:-translate-y-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
             </svg>
             <span class="text-sm font-medium">Ver en Google Maps ↗</span>
-          </a>
-        </div>
-      </div>
+          </div>
+        </a>
+      </aside>
 
-      <!-- Form -->
-      <div>
-        <h2 class="text-2xl font-bold text-slate-900 mb-6">Envianos un mensaje</h2>
-        <form
-          action="mailto:Instituto189info@gmail.com"
-          method="get"
-          class="flex flex-col gap-5"
-        >
-          <div>
-            <label for="nombre" class="block text-sm font-medium text-slate-700 mb-1.5">
-              Nombre completo
-            </label>
-            <input
-              type="text"
-              id="nombre"
-              name="name"
-              required
-              placeholder="Tu nombre"
-              class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition"
-            />
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-medium text-slate-700 mb-1.5">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="from"
-              required
-              placeholder="tu@email.com"
-              class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition"
-            />
-          </div>
-          <div>
-            <label for="asunto" class="block text-sm font-medium text-slate-700 mb-1.5">
-              Asunto
-            </label>
-            <input
-              type="text"
-              id="asunto"
-              name="subject"
-              placeholder="Consulta sobre inscripción"
-              class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition"
-            />
-          </div>
-          <div>
-            <label for="mensaje" class="block text-sm font-medium text-slate-700 mb-1.5">
-              Mensaje
-            </label>
-            <textarea
-              id="mensaje"
-              name="body"
-              required
-              rows="5"
-              placeholder="Escribí tu consulta acá..."
-              class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition resize-y"
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            class="rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-primary-light transition-colors"
-          >
-            Enviar mensaje
-          </button>
-          <p class="text-xs text-slate-400 text-center">
-            Al hacer clic, se abrirá tu cliente de correo con el mensaje listo para enviar.
-          </p>
-        </form>
+      <!-- Form (right, 3 cols) -->
+      <div class="reveal reveal-delay-1 lg:col-span-3">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+          <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-1">Envianos tu consulta</h2>
+          <p class="text-sm text-slate-500 mb-6">Completá los datos y elegí por dónde mandar el mensaje.</p>
+
+          <form id="contact-form" class="flex flex-col gap-5" novalidate>
+            <!-- Tipo de consulta -->
+            <div>
+              <label for="tipo" class="block text-sm font-medium text-slate-700 mb-1.5">
+                Tipo de consulta
+              </label>
+              <select
+                id="tipo"
+                name="tipo"
+                required
+                class="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition appearance-none bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=\'http://www.w3.org/2000/svg\'%20fill=\'none\'%20viewBox=\'0%200%2024%2024\'%20stroke=\'%2364748b\'%20stroke-width=\'2\'><path%20stroke-linecap=\'round\'%20stroke-linejoin=\'round\'%20d=\'M19.5%208.25l-7.5%207.5-7.5-7.5\'/></svg>')] bg-no-repeat bg-[right_0.75rem_center] bg-[length:1.25rem] pr-10"
+              >
+                <option value="" disabled selected>Elegí una opción…</option>
+                <option value="Inscripción">Inscripción 2026</option>
+                <option value="Carreras">Información sobre carreras</option>
+                <option value="Equivalencias">Equivalencias / cambio de carrera</option>
+                <option value="Becas">Becas y boleto educativo</option>
+                <option value="Institucional">Consulta institucional</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+
+            <!-- Carrera de interés (condicional) -->
+            <div>
+              <label for="carrera" class="block text-sm font-medium text-slate-700 mb-1.5">
+                Carrera de interés <span class="text-slate-400 font-normal">(opcional)</span>
+              </label>
+              <select
+                id="carrera"
+                name="carrera"
+                class="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition appearance-none bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=\'http://www.w3.org/2000/svg\'%20fill=\'none\'%20viewBox=\'0%200%2024%2024\'%20stroke=\'%2364748b\'%20stroke-width=\'2\'><path%20stroke-linecap=\'round\'%20stroke-linejoin=\'round\'%20d=\'M19.5%208.25l-7.5%207.5-7.5-7.5\'/></svg>')] bg-no-repeat bg-[right_0.75rem_center] bg-[length:1.25rem] pr-10"
+              >
+                <option value="">— No estoy seguro/a —</option>
+                {carreras.map((c) => (
+                  <option value={c.data.nombre}>{c.data.nombre}</option>
+                ))}
+              </select>
+            </div>
+
+            <!-- Nombre + Email side-by-side -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="nombre" class="block text-sm font-medium text-slate-700 mb-1.5">
+                  Nombre y apellido
+                </label>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  required
+                  autocomplete="name"
+                  placeholder="Juan Pérez"
+                  class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-slate-700 mb-1.5">
+                  Email <span class="text-slate-400 font-normal">(opcional)</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="vos@email.com"
+                  class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition"
+                />
+              </div>
+            </div>
+
+            <!-- Mensaje -->
+            <div>
+              <div class="flex items-baseline justify-between mb-1.5">
+                <label for="mensaje" class="block text-sm font-medium text-slate-700">
+                  Mensaje
+                </label>
+                <span id="char-count" class="text-xs text-slate-400 tabular-nums">0 / 600</span>
+              </div>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                required
+                rows="5"
+                maxlength="600"
+                placeholder="Contanos en qué podemos ayudarte…"
+                class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition resize-y"
+              ></textarea>
+            </div>
+
+            <!-- Error/success banner -->
+            <div id="form-error" class="hidden rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+              Completá los campos requeridos para continuar.
+            </div>
+
+            <!-- Submit buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <button
+                type="button"
+                id="send-whatsapp"
+                class="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1ebe5d] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#25D366]/30 transition-all"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Enviar por WhatsApp
+              </button>
+              <button
+                type="button"
+                id="send-email"
+                class="group inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-primary-light hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30 transition-all"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
+                </svg>
+                Enviar por Email
+              </button>
+            </div>
+            <p class="text-xs text-slate-400 text-center">
+              No usamos servicios externos: tu mensaje se abre directamente en WhatsApp o tu cliente de mail.
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+
+  <script is:inline define:vars={{ WHATSAPP_NUMBER, EMAIL }}>
+    (function () {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+      const tipo = document.getElementById('tipo');
+      const carrera = document.getElementById('carrera');
+      const nombre = document.getElementById('nombre');
+      const email = document.getElementById('email');
+      const mensaje = document.getElementById('mensaje');
+      const counter = document.getElementById('char-count');
+      const errorBox = document.getElementById('form-error');
+      const waBtn = document.getElementById('send-whatsapp');
+      const mailBtn = document.getElementById('send-email');
+
+      // Character counter
+      function updateCounter() {
+        counter.textContent = `${mensaje.value.length} / 600`;
+      }
+      mensaje.addEventListener('input', updateCounter);
+      updateCounter();
+
+      // Inline validation: clear error on input
+      [tipo, nombre, mensaje].forEach((el) => {
+        el.addEventListener('input', () => {
+          el.classList.remove('border-red-400', 'ring-2', 'ring-red-100');
+          errorBox.classList.add('hidden');
+        });
+        el.addEventListener('change', () => {
+          el.classList.remove('border-red-400', 'ring-2', 'ring-red-100');
+          errorBox.classList.add('hidden');
+        });
+      });
+
+      function validate() {
+        let ok = true;
+        [tipo, nombre, mensaje].forEach((el) => {
+          if (!el.value.trim()) {
+            el.classList.add('border-red-400', 'ring-2', 'ring-red-100');
+            ok = false;
+          }
+        });
+        errorBox.classList.toggle('hidden', ok);
+        if (!ok) {
+          const firstInvalid = form.querySelector('.border-red-400');
+          if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return ok;
+      }
+
+      function buildSubject() {
+        const t = tipo.value || 'Consulta';
+        const c = carrera.value ? ` — ${carrera.value}` : '';
+        return `[Web] ${t}${c}`;
+      }
+
+      function buildBody() {
+        const lines = [
+          `Hola, soy ${nombre.value.trim()}.`,
+          '',
+          `Tipo de consulta: ${tipo.value}`,
+        ];
+        if (carrera.value) lines.push(`Carrera de interés: ${carrera.value}`);
+        if (email.value.trim()) lines.push(`Email de contacto: ${email.value.trim()}`);
+        lines.push('', mensaje.value.trim(), '', '— Enviado desde isft189.github.io');
+        return lines.join('\n');
+      }
+
+      waBtn.addEventListener('click', () => {
+        if (!validate()) return;
+        const text = `*${buildSubject()}*\n\n${buildBody()}`;
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener');
+      });
+
+      mailBtn.addEventListener('click', () => {
+        if (!validate()) return;
+        const subject = encodeURIComponent(buildSubject());
+        const body = encodeURIComponent(buildBody());
+        window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+      });
+    })();
+  </script>
 </BaseLayout>
