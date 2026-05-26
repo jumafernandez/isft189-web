@@ -32,7 +32,3 @@ El egresado estará capacitado para:
 - Desarrollador/a backend de APIs y microservicios
 - Técnico/a de soporte y mantenimiento de software
 - Freelancer en desarrollo de soluciones digitales
-
-## Plan de estudios
-
-El plan de estudios está sujeto a disponibilidad. Próximamente disponible para descargar.

@@ -32,7 +32,3 @@ El egresado estará capacitado para:
 - Community manager y productor/a de contenidos
 - Corresponsal local o agencias de noticias
 - Gestor/a de comunicación institucional
-
-## Plan de estudios
-
-El plan de estudios está sujeto a disponibilidad. Próximamente disponible para descargar.

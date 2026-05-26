@@ -32,7 +32,3 @@ El egresado estará capacitado para:
 - Desarrollador/a de soluciones de IA y automatización
 - Consultor/a en transformación digital
 - Especialista en Business Intelligence
-
-## Plan de estudios
-
-El plan de estudios está sujeto a disponibilidad. Próximamente disponible para descargar.

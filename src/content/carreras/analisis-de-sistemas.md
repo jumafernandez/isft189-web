@@ -32,7 +32,3 @@ El egresado estará capacitado para:
 - Administrador/a de bases de datos
 - Consultor/a en procesos de digitalización
 - Gestor/a de proyectos tecnológicos
-
-## Plan de estudios
-
-El plan de estudios está sujeto a disponibilidad. Próximamente disponible para descargar.

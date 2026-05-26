@@ -32,7 +32,3 @@ El egresado estará capacitado para:
 - Intérprete y acompañante de grupos internacionales
 - Gestor/a de experiencias turísticas
 - Promotor/a de turismo cultural y patrimonial
-
-## Plan de estudios
-
-El plan de estudios está sujeto a disponibilidad. Próximamente disponible para descargar.

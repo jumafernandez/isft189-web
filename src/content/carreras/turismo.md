@@ -32,7 +32,3 @@ El egresado estará capacitado para:
 - Técnico/a en planificación turística municipal o provincial
 - Agente de viajes y turismo
 - Emprendedor/a en servicios turísticos locales
-
-## Plan de estudios
-
-El plan de estudios está sujeto a disponibilidad. Próximamente disponible para descargar.
