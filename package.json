@@ -9,8 +9,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
-    "@rolldown/binding-darwin-arm64": "^1.0.2",
-    "@tailwindcss/typography": "^0.5.19",
+"@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.4",
     "astro": "^5.8.0",
     "tailwindcss": "^4.1.4"
