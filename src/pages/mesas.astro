@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { u } from '../lib/url';
+---
+<BaseLayout
+  title="Mesas de examen"
+  description="Fechas de mesas de examen del ISFT N°189 de Luján."
+>
+  <div class="bg-primary text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <a href={u('/recursos')} class="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-6">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/>
+        </svg>
+        Recursos
+      </a>
+      <h1 class="text-4xl font-bold mb-3">Mesas de examen</h1>
+      <p class="text-slate-300">Calendario y fechas de mesas de examen finales.</p>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <div class="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-12">
+      <svg class="w-12 h-12 text-slate-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 9v7.5"/>
+      </svg>
+      <h2 class="text-xl font-semibold text-slate-700 mb-2">Calendario en preparación</h2>
+      <p class="text-slate-500 text-sm leading-relaxed max-w-sm mx-auto">
+        Las fechas de mesas de examen se publicarán próximamente. Para consultas, comunicarse con la secretaría del instituto.
+      </p>
+      <a
+        href={u('/contacto')}
+        class="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-light transition-colors"
+      >
+        Contactarnos
+      </a>
+    </div>
+  </div>
+</BaseLayout>

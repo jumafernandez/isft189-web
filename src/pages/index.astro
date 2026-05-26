@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CarreraCard from '../components/CarreraCard.astro';
+import { getCollection } from 'astro:content';
+import { u } from '../lib/url';
+
+const carreras = (await getCollection('carreras')).sort((a, b) => a.data.orden - b.data.orden);
+const novedades = (await getCollection('novedades')).sort(
+  (a, b) => b.data.fecha.getTime() - a.data.fecha.getTime()
+).slice(0, 2);
+---
+<BaseLayout title="ISFT N°189" description="Instituto Superior de Formación Técnica N°189 de Luján. Tecnicaturas superiores en Ciencia de Datos e IA, Análisis de Sistemas, Desarrollo de Software, Turismo y Periodismo. Modalidad semi-presencial.">
+
+  <!-- Hero -->
+  <section class="relative bg-primary overflow-hidden">
+    <!-- Subtle decorative grid -->
+    <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 rounded-full bg-accent/20 border border-accent/30 px-4 py-1.5 text-sm font-medium text-accent mb-6">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+          </span>
+          Inscripciones 2026 abiertas
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          Formación técnica<br />
+          <span class="text-accent">para el futuro</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl">
+          Tecnicaturas superiores de 3 años con título oficial, en modalidad semi-presencial.
+          Preparáte para el mercado laboral con formación práctica y actualizada.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a
+            href={u('/carreras')}
+            class="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-base font-semibold text-primary hover:bg-accent-light transition-colors shadow-lg shadow-accent/20"
+          >
+            Ver carreras
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+            </svg>
+          </a>
+          <a
+            href={u('/inscripcion')}
+            class="inline-flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors"
+          >
+            Cómo inscribirse
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom fade -->
+    <div class="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-slate-50 to-transparent"></div>
+  </section>
+
+  <!-- Carreras -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+    <div class="mb-10">
+      <p class="text-sm font-semibold uppercase tracking-wider text-accent mb-2">Oferta académica</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Nuestras tecnicaturas</h2>
+      <p class="mt-3 text-slate-500 max-w-xl">
+        Seis carreras de nivel superior con salida laboral inmediata, todas en modalidad semi-presencial.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {carreras.map(carrera => <CarreraCard carrera={carrera} />)}
+    </div>
+  </section>
+
+  <!-- Novedades -->
+  {novedades.length > 0 && (
+    <section class="bg-white border-y border-slate-100">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+        <div class="flex items-end justify-between mb-10">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wider text-accent mb-2">Novedades</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Últimas noticias</h2>
+          </div>
+          <a href={u('/novedades')} class="hidden md:inline-flex text-sm font-medium text-primary hover:text-accent transition-colors">
+            Ver todas →
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {novedades.map(novedad => (
+            <a
+              href={u(`/novedades/${novedad.slug}`)}
+              class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-6 hover:border-accent hover:shadow-md transition"
+            >
+              <time class="text-xs font-medium text-slate-400" datetime={novedad.data.fecha.toISOString()}>
+                {novedad.data.fecha.toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+              <h3 class="text-lg font-semibold text-slate-900 group-hover:text-primary transition-colors leading-snug">
+                {novedad.data.titulo}
+              </h3>
+              <p class="text-sm text-slate-500 leading-relaxed">{novedad.data.resumen}</p>
+              <span class="text-sm font-medium text-accent mt-auto">Leer más →</span>
+            </a>
+          ))}
+        </div>
+        <div class="mt-6 md:hidden text-center">
+          <a href={u('/novedades')} class="text-sm font-medium text-primary hover:text-accent transition-colors">
+            Ver todas las novedades →
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Inscripción -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+    <div class="rounded-3xl bg-primary px-8 py-12 md:py-16 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        ¿Querés estudiar con nosotros?
+      </h2>
+      <p class="text-slate-300 text-lg max-w-xl mx-auto mb-8">
+        Las inscripciones 2026 están abiertas. Sumate a una de nuestras 6 tecnicaturas superiores.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href={u('/inscripcion')}
+          class="rounded-xl bg-accent px-8 py-3 text-base font-semibold text-primary hover:bg-accent-light transition-colors"
+        >
+          Ver cómo inscribirme
+        </a>
+        <a
+          href={u('/contacto')}
+          class="rounded-xl border border-white/20 px-8 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors"
+        >
+          Consultar
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,109 @@
+---
+import { u } from '../lib/url';
+
+const navLinks = [
+  { href: u('/'), label: 'Inicio' },
+  { href: u('/carreras'), label: 'Carreras' },
+  { href: u('/institucional'), label: 'Institución' },
+  { href: u('/novedades'), label: 'Novedades' },
+  { href: u('/inscripcion'), label: 'Inscripción' },
+  { href: u('/contacto'), label: 'Contacto' },
+];
+
+const externalLinks = [
+  { href: 'http://200.110.187.39/moodle/login/index.php', label: 'Campus', external: true },
+];
+---
+<header class="sticky top-0 z-50 bg-primary shadow-lg">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <!-- Logo -->
+      <a href={u('/')} class="flex-shrink-0">
+        <img
+          src={u('/img/logo.png')}
+          alt="ISFT N°189 Luján"
+          class="h-10 w-auto"
+          width="120"
+          height="40"
+        />
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-1">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class="rounded-lg px-3 py-2 text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-white transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
+        {externalLinks.map(link => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ml-2 rounded-lg border border-accent px-3 py-2 text-sm font-semibold text-accent hover:bg-accent hover:text-primary transition-colors"
+          >
+            {link.label} ↗
+          </a>
+        ))}
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="menu-toggle"
+        type="button"
+        class="md:hidden rounded-lg p-2 text-slate-300 hover:bg-white/10 hover:text-white transition-colors"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+      >
+        <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+        </svg>
+        <svg id="icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-primary-light">
+    <nav class="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-1">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-white transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      {externalLinks.map(link => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-1 rounded-lg border border-accent px-3 py-2.5 text-sm font-semibold text-accent hover:bg-accent hover:text-primary transition-colors text-center"
+        >
+          {link.label} ↗
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

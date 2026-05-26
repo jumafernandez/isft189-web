@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { u } from '../../lib/url';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const novedades = await getCollection('novedades');
+  return novedades.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+type Props = { entry: CollectionEntry<'novedades'> };
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { titulo, fecha, resumen } = entry.data;
+---
+<BaseLayout title={titulo} description={resumen}>
+  <div class="bg-primary text-white">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-14">
+      <a href={u('/novedades')} class="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-6">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/>
+        </svg>
+        Todas las novedades
+      </a>
+      <time class="text-sm text-slate-400 block mb-3" datetime={fecha.toISOString()}>
+        {fecha.toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </time>
+      <h1 class="text-3xl md:text-4xl font-bold leading-tight">{titulo}</h1>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+    <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-h2:text-2xl prose-h3:text-xl prose-p:text-slate-600 prose-li:text-slate-600 prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-800">
+      <Content />
+    </div>
+  </div>
+</BaseLayout>
