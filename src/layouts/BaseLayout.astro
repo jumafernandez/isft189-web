@@ -76,8 +76,49 @@ const fullTitle = title === 'ISFT N°189' ? title : `${title} — ISFT N°189 Lu
         );
         els.forEach((el) => io.observe(el));
       }
-      setupReveal();
-      document.addEventListener('astro:page-load', setupReveal);
+
+      function setupCounters() {
+        const counters = document.querySelectorAll<HTMLElement>('.counter:not([data-done])');
+        if (counters.length === 0) return;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const animate = (el: HTMLElement) => {
+          const target = parseInt(el.dataset.target || '0', 10);
+          if (reduceMotion) { el.textContent = String(target); el.dataset.done = '1'; return; }
+          const duration = 1400;
+          const start = performance.now();
+          const step = (now: number) => {
+            const p = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = String(Math.round(target * eased));
+            if (p < 1) requestAnimationFrame(step);
+            else el.dataset.done = '1';
+          };
+          requestAnimationFrame(step);
+        };
+        if (!('IntersectionObserver' in window)) {
+          counters.forEach((el) => animate(el));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animate(entry.target as HTMLElement);
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+        counters.forEach((el) => io.observe(el));
+      }
+
+      function setupAll() {
+        setupReveal();
+        setupCounters();
+      }
+      setupAll();
+      document.addEventListener('astro:page-load', setupAll);
     </script>
   </body>
 </html>

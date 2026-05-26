@@ -47,6 +47,54 @@
   }
   .animate-float { animation: float 6s ease-in-out infinite; }
 
+  /* Rotating word in hero — pure CSS, no layout shift */
+  .word-rotator {
+    display: inline-block;
+    height: 1.05em;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1.05;
+  }
+  .word-rotator-track {
+    display: block;
+    animation: word-rotate 10s cubic-bezier(0.83, 0, 0.17, 1) infinite;
+  }
+  .word-rotator-track > span {
+    display: block;
+    line-height: 1.05;
+  }
+  @keyframes word-rotate {
+    0%, 18%   { transform: translateY(0); }
+    22%, 43%  { transform: translateY(-1.05em); }
+    47%, 68%  { transform: translateY(-2.10em); }
+    72%, 93%  { transform: translateY(-3.15em); }
+    97%, 100% { transform: translateY(-4.20em); }
+  }
+
+  /* Animated gradient sweep on hero text */
+  @keyframes gradient-pan {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-pan 8s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .word-rotator-track,
+    .animate-gradient {
+      animation: none !important;
+    }
+    .word-rotator {
+      height: auto;
+      overflow: visible;
+    }
+    .word-rotator-track > span:not(:first-child) {
+      display: none;
+    }
+  }
+
   @keyframes shimmer {
     0% { background-position: -200% 0; }
     100% { background-position: 200% 0; }
