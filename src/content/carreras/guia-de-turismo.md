@@ -8,6 +8,7 @@ nueva: false
 destacada: false
 icono: "map"
 orden: 4
+planPdf: "/planes/guia-de-turismo.pdf"
 ---
 
 ## Descripción

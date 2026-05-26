@@ -8,6 +8,7 @@ nueva: false
 destacada: true
 icono: "chart-bar"
 orden: 1
+planPdf: "/planes/ciencia-de-datos-ia.pdf"
 ---
 
 ## Descripción

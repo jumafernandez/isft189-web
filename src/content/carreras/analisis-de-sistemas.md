@@ -8,6 +8,7 @@ nueva: false
 destacada: true
 icono: "cpu-chip"
 orden: 2
+planPdf: "/planes/analisis-de-sistemas.pdf"
 ---
 
 ## Descripción

@@ -8,6 +8,7 @@ nueva: true
 destacada: true
 icono: "code-bracket"
 orden: 3
+planPdf: "/planes/desarrollo-de-software.pdf"
 ---
 
 ## Descripción

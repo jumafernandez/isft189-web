@@ -8,6 +8,7 @@ nueva: false
 destacada: false
 icono: "globe"
 orden: 5
+planPdf: "/planes/turismo.pdf"
 ---
 
 ## Descripción

@@ -8,6 +8,7 @@ nueva: false
 destacada: false
 icono: "newspaper"
 orden: 6
+planPdf: "/planes/periodismo.pdf"
 ---
 
 ## Descripción
