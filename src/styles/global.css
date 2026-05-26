@@ -50,10 +50,12 @@
   /* Rotating word in hero — pure CSS, no layout shift */
   .word-rotator {
     display: inline-block;
-    height: 1.05em;
+    height: 1em;
+    line-height: 1;
     overflow: hidden;
-    vertical-align: bottom;
-    line-height: 1.05;
+    vertical-align: baseline;
+    position: relative;
+    top: 0.16em; /* offset so the inner word baseline sits on the surrounding text baseline */
   }
   .word-rotator-track {
     display: block;
@@ -61,14 +63,14 @@
   }
   .word-rotator-track > span {
     display: block;
-    line-height: 1.05;
+    line-height: 1;
   }
   @keyframes word-rotate {
     0%, 18%   { transform: translateY(0); }
-    22%, 43%  { transform: translateY(-1.05em); }
-    47%, 68%  { transform: translateY(-2.10em); }
-    72%, 93%  { transform: translateY(-3.15em); }
-    97%, 100% { transform: translateY(-4.20em); }
+    22%, 43%  { transform: translateY(-1em); }
+    47%, 68%  { transform: translateY(-2em); }
+    72%, 93%  { transform: translateY(-3em); }
+    97%, 100% { transform: translateY(-4em); }
   }
 
   /* Animated gradient sweep on hero text */
